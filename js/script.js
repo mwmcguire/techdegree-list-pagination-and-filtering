@@ -4,8 +4,8 @@ FSJS project 2 - List Filter and Pagination
 ******************************************/
 
 // global variables
-let listItem = document.getElementsByClassName('student-item cf');
-let itemsPerPage = 10;
+let listItems = document.getElementsByClassName('student-item cf');
+const itemsPerPage = 10;
 
 // function to display list items to the page
 const showPage = (list, page) => {
@@ -31,8 +31,9 @@ const appendPageLinks = (list) => {
   page.appendChild(div);
   div.appendChild(ul);
 
-  let numOfPages = list.length / itemsPerPage;
-  for (let i = 1; i < numOfPages; i++) {
+  let numOfPages = Math.ceil(list.length / itemsPerPage);
+
+  for (let i = 1; i <= numOfPages; i++) {
     const li = document.createElement('li');
     const a = document.createElement('a');
 
@@ -47,11 +48,11 @@ const appendPageLinks = (list) => {
         activeClass.className = '';
       }
       e.target.className = 'active';
-      showPage(listItem, a.textContent);
+      showPage(listItems, a.textContent);
     });
   }
 };
 
 // function calls
-showPage(listItem, 1);
-appendPageLinks(listItem);
+showPage(listItems, 1);
+appendPageLinks(listItems);
