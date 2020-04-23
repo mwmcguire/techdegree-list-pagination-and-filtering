@@ -42,10 +42,12 @@ const appendPageLinks = (list) => {
     a.textContent = i;
 
     a.addEventListener('click', (e) => {
-      for (let i = 0; i < numOfPages.length; i++) {
-        a.className = '';
+      if (e.target.className === 'active') {
+        e.target.className = '';
+      } else {
+        e.target.className = 'active';
       }
-      e.target.className = 'active';
+
       showPage(listItem, a.textContent);
     });
   }
