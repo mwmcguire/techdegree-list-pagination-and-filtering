@@ -3,13 +3,13 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
-// global variables
+// Global variables
 let listItems = document.getElementsByClassName('student-item cf');
 let searchResults = [];
 const itemsPerPage = 10;
 const page = document.querySelector('.page');
 
-// dynamic search bar
+// Dynamic search bar
 const searchBar = document.createElement('input');
 searchBar.setAttribute('placeholder', 'Search for students...');
 
@@ -25,6 +25,9 @@ pageHeader[0].appendChild(searchBarDiv);
 searchBarDiv.appendChild(searchBar);
 searchBarDiv.appendChild(submitBtn);
 
+// Function to perform a search given two parameters
+// Param 1.) the input to the search bar
+// Param 2.) a list of items
 const performSearch = (input, names) => {
   for (let i = 0; i < names.length; i++) {
     let name = names[i].textContent.toLowerCase();
@@ -37,6 +40,7 @@ const performSearch = (input, names) => {
   }
 };
 
+// Add event listener to the submit button to perform search function
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   performSearch(searchBar, listItems);
@@ -47,12 +51,15 @@ submitBtn.addEventListener('click', (e) => {
   console.log('submit button is functional');
 });
 
+// Add event listener to keystrokes to perform search funtion
 searchBar.addEventListener('keyup', () => {
   performSearch(searchBar, listItems);
   console.log('keyup event on search input is functional');
 });
 
-// function to display list items to the page
+// Function to display list items to the page given two parameters
+// Param 1.) a list of items
+// Param 2.) the page number
 const showPage = (list, page) => {
   let startIndex = page * itemsPerPage - itemsPerPage;
   let endIndex = page * itemsPerPage;
@@ -66,7 +73,8 @@ const showPage = (list, page) => {
   }
 };
 
-// function to append link items to the page
+// Function to generate and append link items to the page given a single parameter
+// Param 1.) a list of items
 const appendPageLinks = (list) => {
   const div = document.createElement('div');
   const ul = document.createElement('ul');
@@ -86,6 +94,7 @@ const appendPageLinks = (list) => {
     a.href = '#';
     a.textContent = i;
 
+    // Add event listener for each link
     a.addEventListener('click', (e) => {
       e.preventDefault();
       const activeClass = document.querySelector('.active');
@@ -98,6 +107,6 @@ const appendPageLinks = (list) => {
   }
 };
 
-// function calls
+// Function calls
 showPage(listItems, 1);
 appendPageLinks(listItems);
