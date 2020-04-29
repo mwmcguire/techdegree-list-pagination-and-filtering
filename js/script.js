@@ -68,9 +68,10 @@ const showPage = (list, page, searchResult) => {
   console.log('search result: ' + searchResult);
 
   for (let i = 0; i < list.length; i++) {
-    if ((i >= startIndex) & (i < endIndex)) {
-      list[i].style.display = '';
-    } else if (list[i] === searchResult) {
+    if (searchResult) {
+      searchResult[0].style.display = '';
+      list[i].style.display = 'none';
+    } else if ((i >= startIndex) & (i < endIndex)) {
       list[i].style.display = '';
     } else {
       list[i].style.display = 'none';
