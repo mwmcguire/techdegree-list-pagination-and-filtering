@@ -5,10 +5,6 @@ FSJS project 2 - List Filter and Pagination
 
 // Global variables
 let listItems = document.getElementsByClassName('student-item cf');
-console.log(listItems);
-// for (let i = 0; i <= listItems.length; i++) {
-//   console.log(listItems[i].firstElementChild.children[1].textContent);
-// }
 let searchResults = [];
 const itemsPerPage = 10;
 const page = document.querySelector('.page');
@@ -49,7 +45,7 @@ submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   performSearch(searchBar, listItems);
   showPage(listItems, 1, searchResults);
-  console.log('submit button is functional');
+  // console.log('submit button is functional');
 });
 
 // Add event listener to keystrokes to perform search funtion
@@ -65,7 +61,7 @@ const showPage = (list, page, searchResult) => {
   let startIndex = page * itemsPerPage - itemsPerPage;
   let endIndex = page * itemsPerPage;
 
-  console.log('search result: ' + searchResult);
+  // console.log('search result: ' + searchResult);
 
   for (let i = 0; i < list.length; i++) {
     if (searchResult) {
